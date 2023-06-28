@@ -3,9 +3,20 @@ import { Buffer } from "buffer";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ReactLoading from "react-loading";
+
+import {
+  Button,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  Card,
+} from "@material-tailwind/react";
+
 function FetchImage() {
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(!open);
 
   useEffect(() => {
     let abortController = new AbortController();
@@ -41,21 +52,38 @@ function FetchImage() {
             🤷🏼‍♂️ ไม่พบรูปภาพของอุปกรณ์!!! 🤷🏼‍♂️
           </h5>
           <div className="flex justify-center">
-            <ReactLoading
-              type="spin"
-              color="red"
-            />
+            <ReactLoading type="spin" color="red" />
           </div>
         </div>
       ) : (
         <div className="flex justify-center">
           <div className="py-5">
-            <img
-              src={data}
-              className="h-auto max-w-full"
-              width={300}
-              height={300}
-            />
+            <Card
+              className="h-64 w-96 cursor-pointer overflow-hidden transition-opacity hover:opacity-90"
+              onClick={handleOpen}
+            >
+              <img
+                alt="nature"
+                className="h-full w-full object-cover object-center"
+                src={data}
+              />
+            </Card>
+            <Dialog size="xl" open={open} handler={handleOpen}>
+              <DialogHeader className="justify-end">
+                <div className="flex items-center gap-2">
+                  <Button color="green" size="sm" onClick={handleOpen}>
+                    Close
+                  </Button>
+                </div>
+              </DialogHeader>
+              <DialogBody divider={true} className="p-0">
+                <img
+                  alt="nature"
+                  className="object-cover object-center"
+                  src={data}
+                />
+              </DialogBody>
+            </Dialog>
           </div>
         </div>
       )}

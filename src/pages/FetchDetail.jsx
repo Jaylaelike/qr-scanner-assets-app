@@ -31,7 +31,7 @@ function FetchDetial() {
 
   return (
     <>
-      <section className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
+      <section className="bg-gradient-to-r from-blue-500 from-10% via-green-00 via-30% to-pink-500 to-90%">
         <div className="flex items-center justify-center pt-4">
           <div className=" justify-items-center pt-6 max-w-6xl bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             {data?.length === 0 ? (
