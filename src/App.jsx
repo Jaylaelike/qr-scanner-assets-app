@@ -3,6 +3,7 @@ import { BrowserRouter ,Route} from 'react-router-dom'
 import Home from "./pages/Home";
 import FetchDetial from "./pages/FetchDetail";
 
+
 function App() {
   return (
 

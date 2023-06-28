@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ReactLoading from "react-loading";
+import FetchImage from "./FetchImage";
 
 function FetchDetial() {
   const { id } = useParams();
@@ -297,6 +298,7 @@ function FetchDetial() {
                     </tbody>
                   </table>
                 </div>
+                <FetchImage/>
               </div>
             )}
           </div>
